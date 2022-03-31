@@ -7,6 +7,23 @@
 
 import os
 
+def to_usd(my_price):
+    ''''
+    this is a docstring. it tells us what this function is about.
+    what its responsibilities are 
+    what the aprms are about 
+    what data type the params are 
+    what this function will retunr 
+    example of invoking the function: 
+    
+    to_usd(9.9999)
+
+    ''''
+    return '${:,.2f}'.format(my_price)
+
+
+from app.utils import to_usd
+
 # checks to see if a products.csv file exists. If not, it uses the default
 if os.path.isfile(os.path.join(os.path.dirname(__file__), "..", "data", "products.csv")) == True:
     print("USING CUSTOM PRODUCTS CSV FILE...")
@@ -33,7 +50,7 @@ print("THERE ARE", len(products), "PRODUCTS:")
 print("---------")
 
 for p in products:
-    print("..." + p["name"] + "   " + '${:,.2f}'.format(p["price"]))
+    print("..." + p["name"] + "   " + to_usd(p["price"]))
 
 
 all_prices = []
@@ -44,7 +61,7 @@ import statistics
 avg_price = statistics.median(all_prices)
 
 print("---------")
-print("AVERAGE PRICE:", '${:,.2f}'.format(avg_price))
+print("AVERAGE PRICE:", to_usd(avg_price))
 
 
 
